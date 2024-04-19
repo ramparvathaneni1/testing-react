@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react"; //import useState
 
 function App() {
+  const [showAboutUs, setShowAboutUs] = useState(false); //set up state var and setState function
+
+  const handleShowAboutUs = () => {
+    //callback for when the user clicks on the button
+    setShowAboutUs(true); //set state var to true for use in DOM
+  };
+
+  const handleCloseBtn = () => {
+    setShowAboutUs(false);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>Super Duper Company</h1>
+      <button onClick={handleShowAboutUs}>About Us</button>
+      <button onClick={handleCloseBtn}>Close</button> {/*set up click handler*/}
+      {showAboutUs ? ( //user ternary to decide whether or not to display <main>
+        <main>We Rock</main>
+      ) : null}
+    </>
   );
 }
 
